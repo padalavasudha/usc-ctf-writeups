@@ -6,7 +6,9 @@
 
 ### Description:
  what is server side template injection? can you use it to get garfields secret?
+ 
  garfield-fun.challenge.uscctf.org 
+ 
  Downloads: app.py
 
 ### Below is the simplified version of SSTI
