@@ -1,31 +1,31 @@
 ### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
-    **CTF:** USC CTF  
-    **Challenge:** garfield-fun  
-    **Category:** Web  
-    **Points:** 100 
+ **CTF:** USC CTF  
+ **Challenge:** garfield-fun  
+ **Category:** Web  
+ **Points:** 100 
 
-    ### Description:
-    what is server side template injection? can you use it to get garfields secret?
-    garfield-fun.challenge.uscctf.org 
-    Downloads: app.py
+### Description:
+ what is server side template injection? can you use it to get garfields secret?
+ garfield-fun.challenge.uscctf.org 
+ Downloads: app.py
 
-    ### Below is the simplified version of SSTI
+   ### Below is the simplified version of SSTI
   
-      Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
-      
-      Templates are used by web applications to generate HTML pages. 
-      Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
-      These engines can evaluate expressions written inside special syntax like {{ ... }}.
-      
-      If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
-      for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
-      
-      This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
+   Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
+   
+   Templates are used by web applications to generate HTML pages. 
+   Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
+   These engines can evaluate expressions written inside special syntax like {{ ... }}.
+   
+   If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
+   for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
+   
+   This confirms that the input is being executed on the server, which means Server Side Template Injection exists.
 
-    ### Initial Approach
+   ### Initial Approach
 
-    I started by reading about Server-Side Template Injection (SSTI) 
-    [reference](https://medium.com/@Fcmam5/ctf-as-a-developer-pt-1-template-engines-ssti-b03c59e2c095) then I looked into the app.py        given in the challenge. 
+ I started by reading about Server-Side Template Injection (SSTI) 
+ [reference](https://medium.com/@Fcmam5/ctf-as-a-developer-pt-1-template-engines-ssti-b03c59e2c095) then I looked into the app.py        given in the challenge. 
   ```python
   from flask import Flask, request, render_template_string, render_template
 
@@ -75,7 +75,7 @@
       app.run(debug=True)
   ```
 
-    I noticed that user input (word_1 to word_16) is inserted into a template using .format() and then rendered using                       render_template_string(). This made me suspect **SSTI**.
+ I noticed that user input (word_1 to word_16) is inserted into a template using .format() and then rendered using                       render_template_string(). This made me suspect **SSTI**.
 
   
 
