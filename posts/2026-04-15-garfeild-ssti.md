@@ -26,8 +26,8 @@
 
    ### Initial Approach
 
-   I started by reading about Server-Side Template Injection (SSTI) 
-   [reference](https://medium.com/@Fcmam5/ctf-as-a-developer-pt-1-template-engines-ssti-b03c59e2c095) 
+   I started by [reading](https://medium.com/@Fcmam5/ctf-as-a-developer-pt-1-template-engines-ssti-b03c59e2c095) about Server-Side Template Injection (SSTI) 
+   
    After that, I looked into the app.py given in the challenge. 
   ```python
   from flask import Flask, request, render_template_string, render_template
