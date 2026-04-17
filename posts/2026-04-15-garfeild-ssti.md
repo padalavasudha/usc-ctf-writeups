@@ -1,4 +1,4 @@
-`## Garfield Fun – Server Side Template Injection (SSTI) Exploitation
+### Garfield Fun – Server Side Template Injection (SSTI) Exploitation
 **CTF:** USC CTF  
 **Challenge:** garfield-fun  
 **Category:** Web  
@@ -73,7 +73,7 @@
       app.run(debug=True)
   ```
 
-  I noticed that user input (word_1 to word_16) is inserted into a template using .format() and then rendered using                       render_template_string(). This made me suspect **SSTI**.`
+  I noticed that user input (word_1 to word_16) is inserted into a template using .format() and then rendered using                       render_template_string(). This made me suspect **SSTI**.
 
   
 
