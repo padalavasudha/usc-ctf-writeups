@@ -87,7 +87,7 @@
     Payload:/mylabs?word_5={{7*7}}
  ![SSTI_Confirmed](../assets/Garfield_1.png)
  
-    Output:49
+    Output: Observe the 49 in the image above.
     This confirms that SSTI exists.
 
  ---
