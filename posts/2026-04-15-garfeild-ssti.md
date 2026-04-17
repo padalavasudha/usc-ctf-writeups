@@ -11,9 +11,11 @@
 
 ### Below is the simplified version of SSTI
   
-      Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside         a template without treating it as plain text. 
+      Server-Side Template Injection (SSTI) is a vulnerability that happens when a website takes user input and directly uses it inside a template without treating it as plain text. 
       
-      Templates are used by web applications to generate HTML pages. Some common template engines are Jinja2 (Python/Flask), Twig               (PHP),etc. These engines can evaluate expressions written inside special syntax like {{ ... }}.
+      Templates are used by web applications to generate HTML pages. 
+      Some common template engines are Jinja2 (Python/Flask), Twig (PHP),etc. 
+      These engines can evaluate expressions written inside special syntax like {{ ... }}.
       
       If user input is inserted into the template and then rendered, the server may execute that input as code instead of displaying it.
       for example: {{ 7*7 }} is added to the url, Instead of showing "{{7*7}}" as text, the server evaluates it and returns: 49
