@@ -126,28 +126,28 @@
 
 ### Why SSTI is Dangerous
 
-SSTI can allow attackers to:
-
-- Access application configuration  
-- Read sensitive files  
-- Access environment variables  
-- Execute system commands  
-
-In this challenge, it allowed command execution and reading the flag file.
-
----
+    SSTI can allow attackers to:
+    
+    - Access application configuration  
+    - Read sensitive files  
+    - Access environment variables  
+    - Execute system commands  
+    
+    In this challenge, it allowed command execution and reading the flag file.
+    
+    ---
 
 ### Root Cause
 
-The vulnerability exists because:
-
-1. User input is inserted into a string using .format()  
-2. The string is passed to render_template_string()  
-3. The template engine executes anything inside {{ }}  
-
-This means user input is treated as code.
-
----
+    The vulnerability exists because:
+    
+    1. User input is inserted into a string using .format()  
+    2. The string is passed to render_template_string()  
+    3. The template engine executes anything inside {{ }}  
+    
+    This means user input is treated as code.
+    
+    ---
 
 ### Final Thought
 
