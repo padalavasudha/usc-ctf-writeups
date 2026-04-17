@@ -86,14 +86,16 @@
 
     Payload:/mylabs?word_5={{7*7}}
  ![SSTI_Confirmed](../assets/Garfield_1.png)
- Output:49
- This confirms that SSTI exists.
+ 
+    Output:49
+    This confirms that SSTI exists.
 
  ---
  ### Exploring the Environment
     Payload:/mylabs?word_5={{config}}
  ![Config output](../assets/Garfield_2.png)
- This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
+ 
+    This showed the Flask config object, but SECRET_KEY was None, so it was not useful.
 
  ---
 
@@ -110,7 +112,7 @@
 
  ![find output](../assets/Garfield_4.png)
 
- This revealed the presence of flag.txt.
+    This revealed the presence of flag.txt.
 
  ---
 
